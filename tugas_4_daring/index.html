@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jam Digital Elegan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a2e0a 0%, #1c5c1c 50%, #2e8b2e 100%);
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        #clock {
+            background: rgba(0, 20, 0, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        #clock h2 {
+            color: #fff;
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+
+        #date {
+            color: #2ecc71;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        #time {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        #time div {
+            position: relative;
+            background: rgba(0, 30, 0, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 90px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        #time div span {
+            display: block;
+            text-align: center;
+        }
+
+        #time div span:first-child {
+            color: #2ecc71;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
+        }
+
+        #time div span:last-child {
+            color: #fff;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        #ampm {
+            position: relative;
+            background: #2ecc71;
+            color: #0a2e0a;
+            font-size: 1.2em;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+        }
+
+        .decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .circle {
+            position: absolute;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 50%;
+        }
+
+        .circle:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            top: -75px;
+            left: -75px;
+        }
+
+        .circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        @media (max-width: 600px) {
+            #clock {
+                padding: 30px 20px;
+            }
+            
+            #time {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            #time div {
+                min-width: 70px;
+                padding: 15px 10px;
+            }
+            
+            #time div span:first-child {
+                font-size: 2.2em;
+            }
+            
+            #clock h2 {
+                font-size: 1.5em;
+            }
+            
+            #date {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration">
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    
+    <div id="clock">
+        <h2><i class="fas fa-clock"></i> Waktu Sekarang</h2>
+        <div id="date">25 April 2025</div>
+        <div id="time">
+            <div>
+                <span id="hour">00</span>
+                <span>Jam</span>
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                <span>Menit</span>
+            </div>
+            <div>
+                <span id="seconds">00</span>
+                <span>Detik</span>
+            </div>
+        </div>
+        <div id="ampm">AM</div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            const day = now.getDate();
+            const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+            const month = monthNames[now.getMonth()];
+            const year = now.getFullYear();
+            
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            let displayHours = hours % 12;
+            displayHours = displayHours ? displayHours : 12;
+            
+            document.getElementById('hour').textContent = displayHours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            document.getElementById('ampm').textContent = ampm;
+            document.getElementById('date').textContent = `${day} ${month} ${year}`;
+        }
+        
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
