@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio Varrelian | Direktur Keuangan</title>
@@ -174,31 +174,24 @@
       .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
       }
-      @media (max-width: 768px) {
-    .logo {
-        display: none; /* Sembunyikan foto di mobile */
-    }
-    
-    .logo-container {
-        flex-direction: row; /* Tetap horizontal */
-        align-items: center;
-        gap: 15px;
-    }
-    
-    .logo-text h1 {
-        font-size: 1.2rem; /* Perkecil sedikit */
-    }
-}
 
-@media (max-width: 480px) {
-    .logo-text h1 {
-        font-size: 1.1rem; /* Lebih kecil untuk mobile sangat kecil */
-    }
-    
-    #clock {
-        font-size: 0.8rem; /* Perkecil jam juga */
-    }
-}
+      /* === PROFILE PHOTO FOR MOBILE === */
+      .mobile-profile {
+        display: none;
+        text-align: center;
+        margin: 2rem 0;
+      }
+      
+      .mobile-profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--accent);
+        box-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+        margin: 0 auto 1rem;
+      }
+      
       /* === MAIN CONTENT === */
       main {
         padding: 2rem 0;
@@ -430,10 +423,18 @@
           margin: 0.8rem 0;
         }
         
+        .logo {
+          display: none; /* Sembunyikan foto di navbar pada mobile */
+        }
+        
+        .mobile-profile {
+          display: block; /* Tampilkan foto di main pada mobile */
+        }
+        
         .logo-container {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 10px;
+          flex-direction: row;
+          align-items: center;
+          gap: 15px;
         }
         
         .logo-text h1 {
@@ -456,6 +457,11 @@
         
         #about h1 {
           font-size: 2rem;
+        }
+        
+        .mobile-profile-img {
+          width: 120px;
+          height: 120px;
         }
       }
     </style>
@@ -497,6 +503,11 @@
     </header>
     
     <main class="container" tabindex="0">
+      <!-- Foto untuk tampilan mobile -->
+      <div class="mobile-profile">
+        <img src="image.png" alt="Varrelian Profile" class="mobile-profile-img">
+      </div>
+
       <section id="about" class="about-me" aria-label="About me section">
         <h1>👋 Hallo, Saya <strong>Varrelian</strong></h1>
         <p>
@@ -509,8 +520,7 @@
           karya karya yang keren dan dapat di manfaatkan oleh banyak orang
         </p>
       </section>
-      
-         <section id="skills" aria-label="Skills sections">
+       <section id="skills" aria-label="Skills sections">
         <h2><i class="fas fa-lightbulb"></i> Bahasa Pemrograman yang Saya Kuasai</h2>
         <div class="skills-list" role="list">
           <span class="skill" role="listitem"><i class="fas fa-gamepad"></i> Godot</span>
@@ -628,5 +638,4 @@
       });
     </script>
   </body>
-
 </html>
