@@ -174,7 +174,31 @@
       .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
       }
-      
+      @media (max-width: 768px) {
+    .logo {
+        display: none; /* Sembunyikan foto di mobile */
+    }
+    
+    .logo-container {
+        flex-direction: row; /* Tetap horizontal */
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .logo-text h1 {
+        font-size: 1.2rem; /* Perkecil sedikit */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text h1 {
+        font-size: 1.1rem; /* Lebih kecil untuk mobile sangat kecil */
+    }
+    
+    #clock {
+        font-size: 0.8rem; /* Perkecil jam juga */
+    }
+}
       /* === MAIN CONTENT === */
       main {
         padding: 2rem 0;
@@ -604,4 +628,5 @@
       });
     </script>
   </body>
+
 </html>
