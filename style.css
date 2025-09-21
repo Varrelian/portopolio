@@ -147,10 +147,11 @@ button:hover {
 /* kaki nich */
 footer {
   text-align: center;
-  font-size: 0, 9rem;
+  font-size: 0.9rem; 
   padding: 2rem 0;
   color: #999;
 }
+
 img {
   width: 60px;
   height: 60px;
@@ -219,5 +220,6 @@ form button {
   align-self: flex-start; /* tombol nempel ke kiri */
   padding: 0.8rem 2rem;   /* biar proporsional */
 }
+
 
 
