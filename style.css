@@ -209,3 +209,10 @@ img {
     margin: 10px 0;
   }
 }
+form input,
+form textarea,
+form button {
+  width: 100%;   /* biar semua full rata kiri-kanan */
+  max-width: 100%;
+}
+
