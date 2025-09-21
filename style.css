@@ -215,4 +215,9 @@ form button {
   width: 100%;   /* biar semua full rata kiri-kanan */
   max-width: 100%;
 }
+form button {
+  align-self: flex-start; /* tombol nempel ke kiri */
+  padding: 0.8rem 2rem;   /* biar proporsional */
+}
+
 
